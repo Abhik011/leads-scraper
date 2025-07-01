@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: instagram-scraper
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "streamlit run app.py --server.port $PORT"
+    envVars:
+      - key: API_KEY
+        value: your-google-api-key
+      - key: CSE_ID
+        value: your-search-engine-id
