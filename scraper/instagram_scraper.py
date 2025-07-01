@@ -34,6 +34,36 @@ def google_search(query: str, limit: int = 30):
                 })
         start += 10
     return pd.DataFrame(hits)
+def save_excel(df: pd.DataFrame, filename: str, dedupe_by: str = "Email") -> str:
+    """
+    Save leads to Excel, merging with any existing file and dropping duplicates.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        New leads to save.
+    filename : str
+        File name (without extension) inside the `leads/` folder.
+    dedupe_by : str
+        Column name to use for duplicate detection (default: "Email").
+    """
+    os.makedirs("leads", exist_ok=True)
+    path = f"leads/{filename}.xlsx"
+
+    # If the file already exists, merge old + new and drop dups
+    if os.path.exists(path):
+        existing = pd.read_excel(path)
+        df = pd.concat([existing, df], ignore_index=True)
+
+    # Drop duplicates, keeping the first occurrence
+    if dedupe_by in df.columns:
+        df = df.drop_duplicates(subset=dedupe_by, keep="first")
+
+    # Write final dataframe
+    df.to_excel(path, index=False)
+    print(f"✅ Saved {len(df)} unique leads to {path}")
+    return path
+
 
 def save_excel(df: pd.DataFrame, filename: str) -> str:
     os.makedirs("leads", exist_ok=True)

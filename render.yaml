@@ -6,6 +6,6 @@ services:
     startCommand: "streamlit run app.py --server.port $PORT"
     envVars:
       - key: API_KEY
-        value: your-google-api-key
+        value: AIzaSyBZyaS6VMR2mWYOqsYHj8we082pHywGtBo
       - key: CSE_ID
-        value: your-search-engine-id
+        value: 64a87b4b6206a4799

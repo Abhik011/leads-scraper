@@ -2,3 +2,5 @@ google-api-python-client==2.123.0
 python-dotenv==1.0.1
 pandas==2.2.2
 streamlit==1.34.0
+openpyxl          # if saving Excel files (.xlsx)
+requests          # in case you fetch data from other APIs
