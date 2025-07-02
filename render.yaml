@@ -6,6 +6,6 @@ services:
     startCommand: "streamlit run app.py --server.port $PORT"
     envVars:
       - key: API_KEY
-        value: AIzaSyBZyaS6VMR2mWYOqsYHj8we082pHywGtBo
+        value: "AIzaSyBZyaS6VMR2mWYOqsYHj8we082pHywGtBo"
       - key: CSE_ID
-        value: 64a87b4b6206a4799
+        value: "64a87b4b6206a4799"
